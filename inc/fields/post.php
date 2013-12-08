@@ -76,7 +76,8 @@ if ( !class_exists( 'RWMB_Post_Field' ) )
 			$field['query_args'] = wp_parse_args( $field['query_args'], array(
 				'post_type'      => $field['post_type'],
 				'post_status'    => 'publish',
-				'posts_per_page' => '-1'
+				'posts_per_page' => '-1',
+				'suppress_filters' => false
 			) );
 
 			switch ( $field['field_type'] )
