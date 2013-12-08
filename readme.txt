@@ -2,9 +2,9 @@
 Contributors: rilwis, franz-josef-kaiser, Omnicia, funkedgeek, PerWiklander, ruanmer
 Donate link: http://www.deluxeblogtips.com/donate
 Tags: meta-box, custom-fields, custom-field, meta, meta-boxes
-Requires at least: 3.0
-Tested up to: 3.4.2
-Stable tag: 4.2.3
+Requires at least: 3.5
+Tested up to: 3.6.1
+Stable tag: 4.3.6
 
 Meta Box plugin helps you easily implement multiple meta boxes in editing pages in WordPress. Works with custom post types and various field types.
 
@@ -20,27 +20,24 @@ Meta Box plugin provides an API to easily implement custom meta boxes in editing
 
 **Supported fields**
 
-- checkbox_list
-- checkbox
+- button
+- checkbox, checkbox_list
 - color
-- date
-- datetime
-- file
+- date, time, datetime
+- divider
+- file, file_advanced
+- heading
 - hidden
-- image
+- image, thickbox_image, plupload_image, image_advanced
 - map
-- number
 - password
-- plupload_image
+- post
 - radio
-- select
-- select_advanced (uses [select2](http://ivaynberg.github.com/select2/))
-- slider
+- select, select_advanced (uses [select2](http://ivaynberg.github.com/select2/))
+- slider, range
 - taxonomy
-- text
+- text, url, email, number, oembed
 - textarea
-- thickbox_image
-- time
 - wysiwyg
 
 [Project Page](http://www.deluxeblogtips.com/meta-box/) | [Getting Started](http://www.deluxeblogtips.com/meta-box/getting-started/) | [Support Forums](http://www.deluxeblogtips.com/forums/) | [Donate](http://www.deluxeblogtips.com/donate/)
@@ -60,6 +57,82 @@ To getting started with the plugin API, please read [this tutorial](http://www.d
 2. Advanced fields
 
 == Changelog ==
+
+= 4.3.6 =
+* Bug fix: fatal error in PHP 5.2 (continue)
+* Improvement: allow register meta boxes via filter
+
+= 4.3.5 =
+* Bug fix: fatal error in PHP 5.2
+* Bug fix: save empty values of clonable fields
+
+= 4.3.4 =
+* Bug fix: not show upload button after delete image when reach max_file_upload. #347
+* Bug fix: autocomplete for map which conflicts with tags (terms) autocomplete
+* Bug fix: random image order when reorder
+* Bug fix: undefined index, notices in WordPress 3.6, notice error for oembed field
+* Improvement: add default location for map field (via `std` param as usual)
+* Improvement: add `placeholder` for text fields (url, email, etc.)
+* Improvement: add `multiple` param for helper function to get value of multiple fields
+* Improvement: `width` & `height` for map in helper function now requires units (allow to set %)
+* Drop support for WordPress 3.3 (wysiwyg) and < 3.5 (for file & image field which uses new json functions)
+
+= 4.3.3 =
+* Bug fix: cannot clear all terms in taxonomy field
+* Bug fix: potential problem with autosave
+* Bug fix: cannot save zero string value "0"
+* Improvement: add Turkish language
+* Improvement: add taxonomy_advanced field, which saves term IDs as comma separated value in custom field
+
+= 4.3.2 =
+* Bug fix: allow to have more than 1 map on a page
+* Bug fix: use HTTPS for Google Maps to work both in HTTP & HTTPS
+* Bug fix: allow to clear all terms in taxonomy field
+* Bug fix: "std" value for select fields is no longer "placeholder"
+* Improvement: add "placeholder" param for select fields
+* Improvement: add to helper function ability to show Google Maps in the front end. Check documentation for usage.
+* Improvement: add spaces between radio inputs
+* Improvement: add more params to "rwmb_meta" filter
+* Improvement: using CSS animation for delete image
+
+= 4.3.1 =
+* Bug fix: fatal error if ASP open tag is allowed in php.ini
+
+= 4.3 =
+* Bug fix: show full size image after upload if thumbnail is not available
+* Bug fix: new added file not shown
+* Bug fix: issue with color field disappearing
+* Bug fix: `max_file_upload` now works for normal `file` & `image` as well
+* Bug fix: problem with uploading with the advanced fields
+* Bug fix: file & image advanced not saving
+* Bug fix: `select_advanced` cloning issue
+* Bug fix: `plupload_image` ordering
+* Improvement: add `divider`, `heading`, `button`, `range`, `oembed`, `email`, `post` fields
+* Improvement: translation for file & image fields
+* Improvement: add option `default_hidden` to hide meta box by default
+* Improvement: allow to have multiple maps on the same page
+* Improvement: file and image advanced now use Underscore.js
+* Improvement: `slider` filed now has `prefix` and `suffix` for text labels and `js_options` for more JS options
+* Improvement: WYSIWYS can bypass the `wpautop` using `raw` parameter
+* Improvement: `color` field now supports new color picker in WP 3.5
+* Improvement: add `ID` to results returned by `rwmb_meta` when getting meta value of file & image
+* Improvement: auto use localized version for date & time fields
+* Improvement: add `timestamp` option to save the datetime as unix timestamp internally
+* Improvement: add `autosave` option for meta box
+* Improvement: add `force_delete` option for file and image field
+* And lots of changes and improvements
+
+
+= 4.2.4 =
+* Bug fix: path to Select2 JS and CSS. [Link](http://wordpress.org/support/topic/missing-files-5)
+* Bug fix: `taxonomy.js` loading
+* Bug fix: saving in quick mode edit
+* Improvement: add `before` and `after` attributes to fields that can be used to display custom text
+* Improvement: add Arabic and Spanish languages
+* Improvement: add `rwmb*_before_save_post` and `rwmb*_before_save_post` actions before and after save post
+* Improvement: add autocomplete for geo location in `map` field, add fancy animation to drop marker
+* Improvemnet: add `url` field
+
 
 = 4.2.3 =
 * Bug fix: clone date field. [Link](http://www.deluxeblogtips.com/forums/viewtopic.php?id=299)
